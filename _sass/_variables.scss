@@ -1,0 +1,56 @@
+// Core palette (WCAG-conscious)
+$brand-50:  #eef6ff;
+$brand-100: #d9ecff;
+$brand-200: #b3d7ff;
+$brand-300: #84bfff;
+$brand-400: #559fff;
+$brand-500: #317fff; // primary
+$brand-600: #1d66cc;
+$brand-700: #184fa0;
+$brand-800: #143e7d;
+$brand-900: #102f61;
+
+$accent-500: #0fb38f; // secondary accent
+$warning-500: #c87e00;
+$danger-500:  #b3261e;
+$neutral-50:  #f8f9fb;
+$neutral-100: #f1f3f6;
+$neutral-200: #e2e6ec;
+$neutral-300: #cbd3df;
+$neutral-600: #5a6576;
+$neutral-800: #2e3743;
+$black: #0b0f14;
+$white: #ffffff;
+
+// CSS variables—light mode defaults
+:root {
+  --color-bg:        #{$white};
+  --color-bg-muted:  #{$neutral-50};
+  --color-text:      #{$black};
+  --color-text-muted:#{$neutral-800};
+  --color-border:    #{$neutral-200};
+  --color-primary:   #{$brand-600};
+  --color-primary-contrast: #{$white};
+  --color-accent:    #{$accent-500};
+  --color-link:      #{$brand-700};
+  --color-link-hover:#{$brand-800};
+  --color-danger:    #{$danger-500};
+  --radius: 12px;
+  --shadow-1: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.12);
+}
+
+// Auto dark mode using media query (user preference)
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:        #111418;
+    --color-bg-muted:  #1a1f26;
+    --color-text:      #f4f7fa;
+    --color-text-muted:#c3c9d3;
+    --color-border:    #2a3340;
+    --color-primary:   #6aa6ff;
+    --color-primary-contrast: #000;
+    --color-accent:    #26d0ad;
+    --color-link:      #92b9ff;
+    --color-link-hover:#bcd1ff;
+  }
+}
