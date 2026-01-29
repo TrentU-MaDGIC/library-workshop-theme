@@ -1,9 +1,11 @@
 <header class="site-header">
   <div class="wrap">
-    {{ {{ site.title | default: "Library Workshops" }}</a>
+    <a href="{{ '/' | relative_url }}" class="brand{{ site.logo | relative_url }}" alt="{{ site.title }}" class="brand-logo{ site.title | default: "Library Workshops" }}</span>
+    </a>
+
     <nav class="site-nav">
       {%- for item in site.data.nav -%}
-        {{ item.url | relative_url }}{{ item.title }}</a>
+        <a href="{{ item.url | relative item.title }}</a>
       {%- endfor -%}
       <button class="theme-toggle" aria-label="Switch color theme" title="Switch color theme">🌓</button>
     </nav>
