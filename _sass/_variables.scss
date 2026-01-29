@@ -1,56 +1,109 @@
-// Core palette (WCAG-conscious)
-$brand-50:  #eef6ff;
-$brand-100: #d9ecff;
-$brand-200: #b3d7ff;
-$brand-300: #84bfff;
-$brand-400: #559fff;
-$brand-500: #317fff; // primary
-$brand-600: #1d66cc;
-$brand-700: #184fa0;
-$brand-800: #143e7d;
-$brand-900: #102f61;
+// ================================
+// Trent Library & Archives palette
+// ================================
+$brand-green: #154734;  // Primary 1
+$brand-blue:  #5B7F95;  // Primary 2
 
-$accent-500: #0fb38f; // secondary accent
-$warning-500: #c87e00;
-$danger-500:  #b3261e;
-$neutral-50:  #f8f9fb;
-$neutral-100: #f1f3f6;
-$neutral-200: #e2e6ec;
-$neutral-300: #cbd3df;
-$neutral-600: #5a6576;
-$neutral-800: #2e3743;
-$black: #0b0f14;
+$brand-gold:  #C0B561;  // Secondary 1 (assumed from "COB561")
+$brand-teal:  #115E67;  // Secondary 2
+
+$brand-rust:  #B15533;  // Tertiary 1
+$brand-sage:  #A9C47F;  // Tertiary 2
+
+// Neutrals
 $white: #ffffff;
+$black: #0b0f14;
+$slate-50:  #f7f8fa;
+$slate-100: #eef1f5;
+$slate-200: #dde3ea;
+$slate-400: #98a6b6;
+$slate-700: #344152;
+$slate-900: #121822;
 
-// CSS variables—light mode defaults
-:root {
-  --color-bg:        #{$white};
-  --color-bg-muted:  #{$neutral-50};
-  --color-text:      #{$black};
-  --color-text-muted:#{$neutral-800};
-  --color-border:    #{$neutral-200};
-  --color-primary:   #{$brand-600};
-  --color-primary-contrast: #{$white};
-  --color-accent:    #{$accent-500};
-  --color-link:      #{$brand-700};
-  --color-link-hover:#{$brand-800};
-  --color-danger:    #{$danger-500};
-  --radius: 12px;
-  --shadow-1: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.12);
+// Helper tints (Sass mix works on GitHub Pages)
+@function tint($color, $percent) {
+  @return mix($white, $color, $percent);
+}
+@function shade($color, $percent) {
+  @return mix($black, $color, $percent);
 }
 
-// Auto dark mode using media query (user preference)
+/* -------------------------------------------------
+   CSS variables: LIGHT MODE defaults
+-------------------------------------------------- */
+:root {
+  /* Brand tokens */
+  --brand-green: #{$brand-green};
+  --brand-blue:  #{$brand-blue};
+  --brand-gold:  #{$brand-gold};
+  --brand-teal:  #{$brand-teal};
+  --brand-rust:  #{$brand-rust};
+  --brand-sage:  #{$brand-sage};
+
+  /* Derived tints */
+  --brand-green-10: #{tint($brand-green, 90%)};
+  --brand-blue-10:  #{tint($brand-blue, 90%)};
+  --brand-gold-12:  #{tint($brand-gold, 88%)};
+  --brand-teal-10:  #{tint($brand-teal, 90%)};
+
+  /* UI roles */
+  --color-bg:        #{$white};
+  --color-surface:   #{$slate-50};
+  --color-surface-2: #{$slate-100};
+  --color-text:      #{$black};
+  --color-muted:     #{$slate-700};
+  --color-border:    #{$slate-200};
+
+  --color-primary:   #{$brand-green};
+  --color-primary-contrast: #{$white};
+
+  --color-link:      #{$brand-blue};
+  --color-link-hover: #{shade($brand-blue, 20%)};
+
+  --color-accent:    #{$brand-teal};
+  --color-accent-2:  #{$brand-sage};
+
+  --color-warn:      #{$brand-rust};
+  --color-highlight: var(--brand-gold-12);
+
+  --radius: 12px;
+  --shadow-1: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.12);
+
+  /* Header styling */
+  --header-bg: var(--brand-green);
+  --header-text: #ffffff;
+  --header-link: rgba(255,255,255,.92);
+  --header-link-hover: #ffffff;
+}
+
+/* -------------------------------------------------
+   AUTO DARK MODE (prefers-color-scheme)
+-------------------------------------------------- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg:        #111418;
-    --color-bg-muted:  #1a1f26;
-    --color-text:      #f4f7fa;
-    --color-text-muted:#c3c9d3;
-    --color-border:    #2a3340;
-    --color-primary:   #6aa6ff;
-    --color-primary-contrast: #000;
-    --color-accent:    #26d0ad;
-    --color-link:      #92b9ff;
-    --color-link-hover:#bcd1ff;
+    --color-bg:        #0f1418;
+    --color-surface:   #151c22;
+    --color-surface-2: #1b2430;
+    --color-text:      #f2f5f7;
+    --color-muted:     #c9d3dc;
+    --color-border:    #2a3743;
+
+    /* Keep brand recognizable but brighten for dark UI */
+    --color-primary:   #{tint($brand-green, 35%)};
+    --color-primary-contrast: #08110c;
+
+    --color-link:      #{tint($brand-blue, 35%)};
+    --color-link-hover: #{tint($brand-blue, 55%)};
+
+    --color-accent:    #{tint($brand-teal, 30%)};
+    --color-accent-2:  #{tint($brand-sage, 20%)};
+
+    --color-warn:      #{tint($brand-rust, 25%)};
+    --color-highlight: rgba(192,181,97,.18);
+
+    --header-bg: #0e2a20; /* deep green-ish header for dark mode */
+    --header-text: #f2f5f7;
+    --header-link: rgba(242,245,247,.9);
+    --header-link-hover: #ffffff;
   }
 }
