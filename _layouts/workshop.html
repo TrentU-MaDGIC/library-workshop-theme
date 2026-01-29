@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<article class="workshop">
+  <header class="workshop-header">
+    <h1>{{ page.title }}</h1>
+    <p class="workshop-meta">
+      {%- if page.when -%}<strong>When:</strong> {{ page.when }} · {%- endif -%}
+      {%- if page.where -%}<strong> Where:</strong> {{ page.where }} {%- endif -%}
+    </p>
+    {%- if page.registration_url -%}
+      <p>{{ page.registration_url }}Register</a></p>
+    {%- endif -%}
+  </header>
+  <section class="workshop-body">
+    {{ content }}
+  </section>
+</article>
