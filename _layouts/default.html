@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% include head.html %}
+  <title>
+    {%- if page.title -%}{{ page.title }} · {%- endif -%}
+    {{ site.title | default: "Library Workshops" }}
+  </title>
+</head>
+<body class="theme-auto">
+  {% include header.html %}
+  <main class="container" id="content">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+</body>
+</html>
